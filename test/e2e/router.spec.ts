@@ -124,25 +124,6 @@ describe('E2E router', () => {
       const response = await agent.get('/api').expect(502);
       expect(response.text).toBe('An error thrown in the router');
     });
-
-    it('missing a : will cause it to use http', async () => {
-      const app = createApp(
-        createProxyMiddleware({
-          target: `https://localhost:${targetPortA}`,
-          secure: false,
-          changeOrigin: true,
-          router: async (req) => {
-            return new Promise((resolve) =>
-              resolve({ host: 'localhost', port: targetPortC, protocol: 'https' })
-            );
-          },
-        })
-      );
-
-      const agent = request(app);
-      const response = await agent.get('/api').expect(200);
-      expect(response.text).toBe('NOT HTTPS C');
-    });
   });
 
   describe('router with proxyTable', () => {
