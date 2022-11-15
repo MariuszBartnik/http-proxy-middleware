@@ -1,6 +1,6 @@
 import type * as https from 'https';
 import type { Request, RequestHandler, Options, Filter } from './types';
-import * as httpProxy from 'http-proxy';
+import * as httpProxy from '@refactorjs/http-proxy';
 import { verifyConfig } from './configuration';
 import { getPlugins } from './get-plugins';
 import { matchPathFilter } from './path-filter';
@@ -13,7 +13,7 @@ export class HttpProxyMiddleware {
   private wsInternalSubscribed = false;
   private serverOnCloseSubscribed = false;
   private proxyOptions: Options;
-  private proxy: httpProxy;
+  private proxy: any;
   private pathRewriter;
 
   constructor(options: Options) {
@@ -74,7 +74,7 @@ export class HttpProxyMiddleware {
     }
   };
 
-  private registerPlugins(proxy: httpProxy, options: Options) {
+  private registerPlugins(proxy: any, options: Options) {
     const plugins = getPlugins(options);
     plugins.forEach((plugin) => {
       debug(`register plugin: "${getFunctionName(plugin)}"`);

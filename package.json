@@ -1,6 +1,6 @@
 {
-  "name": "http-proxy-middleware",
-  "version": "3.0.0-beta.0",
+  "name": "@mariuszbartnik/http-proxy-middleware",
+  "version": "0.0.1",
   "description": "The one-liner node.js proxy middleware for connect, express, next.js and more",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -85,7 +85,7 @@
   "dependencies": {
     "@types/http-proxy": "^1.17.8",
     "debug": "^4.3.4",
-    "http-proxy": "^1.18.1",
+    "@refactorjs/http-proxy": "^0.1.5",
     "is-glob": "^4.0.1",
     "is-plain-obj": "^3.0.0",
     "micromatch": "^4.0.5"
